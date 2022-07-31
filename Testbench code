@@ -1,0 +1,39 @@
+// Code your testbench here
+// or browse Examples
+module maincktt_tb();
+  //reg [3:0]A;
+  //reg [3:0]B;
+  //reg N0,N1,N2,N3,N4;
+  //reg Cin0,Cin1,Cin2,Cin3,Cin4,c0;
+  //wire Sout,Cout;
+  reg [2:0]A0,B0;
+  reg [3:0]A1,B1,A2,B2;
+  reg [3:0]A3,B3,A4,B4;
+  reg Cin0,Cin1,Cin2,Cin3,Cin4,c0,c1;
+  //reg integer N0,N1,N2,N3,N4;
+  wire [10:0]Sout;
+  wire Cout;
+  wire [2:0]S0;
+  wire [3:0]S1,S2;
+  wire [3:0]S3,S4;
+  wire cout;
+  wire [4:0]out0;
+  wire [4:0]out1;
+  
+  wire C0,C1,C2,C3,C4;
+  wire [3:0]Cx0;
+  wire [4:0]Cx1,Cx2;
+  wire [4:0]Cx3,Cx4;
+  mainckt DUT(A0,B0,Cin0,S0,C0,A1,B1,Cin1,S1,C1,A2,B2,Cin2,S2,C2,out0,c0,A3,B3,Cin3,S3,C3,A4,B4,Cin4,S4,C4,out1,cout,Sout,Cout,c1,Cx0,Cx1,Cx2,Cx3,Cx4);
+  initial
+    begin
+     #10 A0<=3'b011; B0<=3'b110; A1<=4'b0011; B1<=4'b0110; A2<=4'b0011; B2<=4'b0110; A3<=4'b0011; B3<=4'b0110; A4<=4'b0011; B4<=4'b0110; Cin0=0; Cin1=0; Cin2=1; Cin3=0; Cin4=1;
+      #10 A0<=3'b001; B0<=3'b000; A1<=4'b0001; B1<=4'b1000; A2<=4'b0001; B2<=4'b1000; A3<=4'b0001; B3<=4'b1000; A4<=4'b0001; B4<=4'b1000; Cin0=0; Cin1=1; Cin2=1; Cin3=0; Cin4=1;
+      #10 $finish;
+    end
+  initial 
+    begin
+      $monitor(" At time=%d,A0=%3b,B0=%3b,A1=%4b,B1=%4b,A2=%4b,B2=%4b,A3=%4b,B3=%4b,A4=%4b,B4=%4b,Sout=%11b,Cout=%b,Cin0=%b,Cin1=%b,Cin2=%b,Cin3=%b,Cin4=%b",$time,A0,B0,A1,B1,A2,B2,A3,B3,A4,B4,Sout,Cout,Cin0,Cin1,Cin2,Cin3,Cin4);
+
+end
+endmodule
